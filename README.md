@@ -11,6 +11,6 @@ Open root directory of this repo in any terminal. Then type the following comman
 `node main.js`
 
 ## P.S.
-Project was written as a Algorithms and Datastructure course project for university. 
+Project was written as a course project for Algorithms and Datastructure subject for university. 
 
 That is why I didn't use any js syntax and inbuild fucntionality, such as ternary operator, contains, split, map, etc.
