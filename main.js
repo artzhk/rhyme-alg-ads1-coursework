@@ -113,7 +113,7 @@ function samePronunciation(string1, string2) {
     i = string1.length - 1;
     j = string2.length - 1;
 
-    const assonantLetters = { a: "e", t: "d", k: "c", s: "c", g: "k", p: "k" };
+    const assonantLetters = { a: "e", k: "c", s: "c", g: "k", p: "k" , d: "t", t: "p"};
     let assonantLettersInStrings = false;
 
     while (i >= 0 && j >= 0) {
