@@ -1,54 +1,23 @@
-const dictionary = [
-    "click",
-    "breed",
-    "dead",
-    "bleed",
-    "bat",
-    "hat",
-    "rat",
-    "mat",
-    "dog",
-    "log",
-    "fog",
-    "jog",
-    "cup",
-    "sup",
-    "pup",
-    "up",
-    "pen",
-    "den",
-    "hen",
-    "bread",
-    "ten",
-    "big",
-    "dig",
-    "pig",
-    "wig",
-    "sun",
-    "fun",
-    "run",
-    "bun",
-    "civilization",
-    "otherwise",
-    "digger",
-    "stone",
-    "rock",
-    "let",
-    "lack",
-    "back",
-    "lek",
-    "clap"
-];
+const fs = require('fs');
+
+const loadTxt = (path) => { 
+    return fs.readFileSync(path).toString().split("\n"); 
+}
+
+const wordsSet = loadTxt("assets/wordlist.txt");
 
 //helper functions
-
+// checks whether string contains substring 
 function containsSubstring(substring, string) {
+    // if some of them are empty or undefined return false
     if (!substring || !string) {
         return false;
     }
     let j = 0;
+    let i = 0;
     let count = 0;
-    for (let i = 0; i < string.length; i++) {
+    // count matching character 
+    while (i < string.length) {
         if (string[i] == substring[0]) {
             count = 0;
             while (j < substring.length) {
@@ -59,11 +28,14 @@ function containsSubstring(substring, string) {
                 j++;
             }
         }
+
+        i++;
     }
 
     return substring.length == count;
 }
 
+// checks whether string contains char
 function containsChar(char, string) {
     let i = 0;
     while (i <= string.length) {
@@ -78,7 +50,7 @@ function containsChar(char, string) {
 }
 
 // Rhymes algorithm functions
-
+// checks whether string two endings pronounce in similar way 
 function samePronunciation(string1, string2) {
     let i = string1.length - 1;
     let j = string2.length - 1;
@@ -86,6 +58,8 @@ function samePronunciation(string1, string2) {
     let string2CompoundSound = false;
 
     const compoundSound = { k: "ck", i: "ee", e: "ee", g: "ck", a: "ea", p: "ck", e: "ea"};
+    //divide current compound sound set 
+    //into few set with different variations of e a k and so on
 
     if (i != j) {
         let sounds = [];
@@ -145,7 +119,7 @@ function samePronunciation(string1, string2) {
  * Obtain an ending of a certain word
  */
 function getEnding(word) {
-    if (word.length <= 2) {
+    if (word.length == 2) {
         return [word[0], word[1]];
     }
 
@@ -198,7 +172,7 @@ const readline = require("readline").createInterface({
 });
 
 readline.question("Enter a word: \n", word => {
-    console.log("Result: \n", getRhymes(word, dictionary));
+    console.log("Result: \n", getRhymes(word, wordsSet));
     readline.close();
 });
 
