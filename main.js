@@ -148,8 +148,8 @@ function getEnding(word) {
  * word ending and compare it with ending of other words
  */
 function getRhymes(word, wordsSet) {
-    const ending = getEnding(word);
-
+    const ending = getEnding(word.trim());
+    console.log(ending)
     const rhymes = [];
     // going over a set of words
     for (let i = 0; i < wordsSet.length; i++) {
