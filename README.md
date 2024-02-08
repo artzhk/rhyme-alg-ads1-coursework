@@ -1,6 +1,6 @@
 # Rhyme algorithm
 
-## How to Run
+### How to Run
 
 ### Node.js
 
